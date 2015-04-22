@@ -1,0 +1,211 @@
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:useDefaultMargins="true"
+        android:alignmentMode="alignBounds"
+        android:columnOrderPreserved="true"
+        
+        android:columnCount="4" >
+    
+           <EditText
+         android:id="@+id/name"   
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:hint="Name"
+        android:layout_gravity="center"
+        android:maxWidth="80dp"
+        android:maxLength="14"
+        android:layout_marginBottom="20dp"
+        android:weightSum="2"
+        android:lines="2"
+        android:selectAllOnFocus="true"
+    
+           />
+            <EditText
+        android:id="@+id/FN"   
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:hint="First Name"
+        android:layout_gravity="right"
+        android:maxWidth="80dp"
+        android:maxLength="14"
+        android:lines="2"
+        android:layout_marginBottom="20dp"
+        android:selectAllOnFocus="true"
+         
+         />
+            <EditText
+          android:id="@+id/PID"         
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:hint="ID"
+        android:maxWidth="100dp"
+        android:maxLength="14"
+        android:lines="2"
+         android:selectAllOnFocus="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+            />
+            
+             <Button
+        android:id="@+id/Save"       
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+         
+        android:text="Save"
+        android:layout_marginEnd="10dp"
+           />
+             
+           
+         
+            <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vital"
+        android:textSize="16dp" 
+        android:layout_gravity="center"
+            />
+    
+            <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Min"
+        android:textSize="16dp" 
+        android:layout_gravity="center"
+           />
+    
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Max"
+        android:textSize="16dp"  
+        android:layout_gravity="center"
+         
+        />
+        
+            <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="Action"
+        android:textSize="16dp"   
+        android:layout_gravity="center"
+   
+           />
+  
+          <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="Heart"
+                 android:textSize="16dp" 
+                 android:layout_gravity="center"
+                 />
+
+    <EditText
+       android:id="@+id/Hmin" 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         
+        android:inputType="number"
+        android:hint="0"
+        android:selectAllOnFocus="true"
+        android:maxLength="3"
+        android:layout_gravity="center"
+         />
+    <EditText
+        android:id="@+id/Hmax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         
+        android:inputType="number"
+        android:hint="0"
+         android:selectAllOnFocus="true"
+         android:maxLength="3"
+         android:layout_gravity="center"
+       />
+      <Button
+        android:id="@+id/btn1"
+        android:layout_height="130dp"
+        android:layout_width="wrap_content"
+         
+        android:text="With"
+        android:layout_rowSpan="3"
+        android:layout_gravity="center"
+      
+       
+      />
+      
+ <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Yellow"
+             android:textSize="16dp"
+             android:layout_gravity="center"
+              />
+
+    <EditText
+        android:id="@+id/Imin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         
+        android:inputType="number"
+        android:hint="0"
+         android:maxLength="3"
+          android:selectAllOnFocus="true"
+          android:layout_gravity="center"
+       />
+    <EditText
+        android:id="@+id/Imax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         
+        android:inputType="number"
+        android:hint="0"
+         android:maxLength="3"
+          android:selectAllOnFocus="true"
+          android:layout_gravity="center"
+       />
+      
+      
+ <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Mobile"
+             android:textSize="16dp" 
+             android:layout_gravity="center"
+               />
+
+    <EditText
+        android:id="@+id/phNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         
+        android:inputType="number"
+        android:hint="Enter Number"
+         android:maxLength="13"
+          android:selectAllOnFocus="true"
+          android:layout_gravity="center"
+          android:layout_columnSpan="2"
+       />
+    
+ 
+      
+ <Button
+          android:id="@+id/btn4"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_columnSpan="4"
+      android:layout_marginStart="25dp"
+        android:text="Load"
+      />
+ 
+  <EditText
+        android:layout_columnSpan="4"
+       
+        android:id="@+id/send_message"   
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:hint="Enter your message here"
+        android:selectAllOnFocus="true"
+      />
+</GridLayout>
+

@@ -1,0 +1,201 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" >
+
+        <ImageView
+            android:id="@+id/iv_state"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_weight="1" />
+
+        <TextSwitcher
+            android:id="@+id/textSwitcher1"
+            android:layout_width="250sp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1" >
+        </TextSwitcher>
+        
+          <Button
+            android:id="@+id/bt_connet"  
+            android:layout_width="70dp"
+            android:layout_height="60dp"
+            android:background="@drawable/round_button"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/menu_connect"
+            android:textColor="#fff" />
+
+    <!--    <ImageView
+            android:id="@+id/iv_battery"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="right"
+            android:layout_weight="1"
+            android:src="@drawable/battery_full" />
+        --> 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp" >
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"
+            android:layout_weight="1" >
+
+            <TableRow
+                android:id="@+id/tableRow1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" >
+
+                <TextView
+                    android:id="@+id/tv_spO2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10sp"
+                    android:layout_weight="1"
+                    android:text="@string/spo2_title" />
+
+                <TextView
+                    android:id="@+id/tv_spO2_value"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:text="0" />
+
+                <TextView
+                    android:id="@+id/tv_spo2_unit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:text="@string/spo2_unit" />
+
+                <ProgressBar
+                    android:id="@+id/pb_spo2"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_marginRight="10sp"
+                    android:layout_weight="1" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1" >
+
+                <TextView
+                    android:id="@+id/tv_heartrate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10sp"
+                    android:layout_weight="1"
+                    android:text="@string/heartrate_title" />
+
+                <TextView
+                    android:id="@+id/tv_heartrate_value"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:text="0" />
+
+                <TextView
+                    android:id="@+id/tv_heartrate_unit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:text="@string/heartrate_unit" />
+
+                <ImageView
+                    android:id="@+id/iv_heart"
+                    android:layout_width="40sp"
+                    android:layout_height="40sp"
+                    android:layout_weight="1"
+                    android:src="@drawable/heart" />
+            </TableRow>
+            
+<!--             <TableRow
+                android:id="@+id/tableRow3"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1" >
+
+                <TextView
+                    android:id="@+id/tv_perfusion_index"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10sp"
+                    android:layout_weight="1"
+                    android:text="@string/perfusion_title" />
+
+                <TextView
+                    android:id="@+id/tv_perfusion_value"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:text="0" />
+
+                <TextView
+                    android:id="@+id/tv_perfusion_unit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:text="@string/perfusion_unit" />
+
+                <ProgressBar
+                    android:id="@+id/pb_perfusion"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_marginRight="10sp"
+                    android:layout_weight="1" />
+            </TableRow>
+ -->
+
+        </TableLayout>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/FrameLayout1" 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom" >
+
+        <com.androidplot.xy.XYPlot
+            android:id="@+id/dynamicPlot"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="20dp" />
+    </FrameLayout>
+
+</LinearLayout>

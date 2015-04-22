@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+      <string name="app_name">SenSoLabs</string>
+    <string name="sensor_connect">Sensor</string>  
+    <string name="ble_not_supported">BLE is not supported</string>
+    <string name="label_data">Data:</string>
+    <string name="label_device_address">Device address:</string>
+    <string name="label_state">State:</string>
+    <string name="no_data">No data</string>
+    <string name="connected">Connected</string>
+    <string name="disconnected">Disconnected</string>
+    <string name="title_devices">Bluetooth Devices Scanner</string>
+    <string name="error_bluetooth_not_supported">Bluetooth not supported.</string>
+
+    <string name="unknown_device">Unknown device</string>
+    <string name="unknown_characteristic">Unknown characteristic</string>
+    <string name="unknown_service">Unknown service</string>
+
+    <!-- Menu items -->
+    <string name="menu_connect">Connect</string>
+    <string name="menu_disconnect">Disconnect</string>
+    <string name="menu_scan">Scan</string>
+    <string name="menu_stop">Stop</string>
+    <string name="menu_refresh">Refreshing</string>
+    
+    <string name="action_settings">Settings</string>
+    <color name="table_background">#999999</color>
+    <color name="row_background">#ffffff</color>
+
+
+    <string name="loading_data">Daten werden abgerufen ..</string>
+
+    <string name="button_ok">OK</string>
+    <string name="button_cancel">Abbrechen</string>
+    <string name="no_medications">Klicken Sie auf das + in der Titelleiste, um Medikamente hinzuzufügen</string>
+    <string name="menu_insert">Medikament hinzufügen</string>
+    <string name="menu_delete">Medikament löschen</string>
+    <string name="menu_navigate">Route berechnen</string>
+    <string name="pmedication_summary">Name des Medikaments</string>
+    <string name="pmedication_description">Medikament entfernen</string>
+    <string name="pmedication_edit_summary">PZN</string>
+    <string name="pmedication_edit_description">Bezeichnung</string>
+    <string name="pmedication_edit_confirm">Speichern</string>
+    <string name="label_pzn">PZN: </string>
+    <string name="medication_name">Handelsname: </string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_remote_db">Aktuelle Veranstaltungen</string>
+    <string name="no_network_available">No network available</string>
+    <string name="invalid_url">Unable to retrieve page data. URL may be invalid.</string>
+    <string name="url_edit_description">Enter URL</string>
+    <string name="title_activity_db_item">DbItemActivity</string>
+    <string name="title_activity_map">Standorte</string>
+    <string name="title_activity_main">Start</string>
+    <string name="button_label_my_data">Meine Daten</string>
+    <string name="ibutton_addmed_description">Medikament hinzufügen</string>
+    <string name="title_activity_pmain_data">Ihre Daten</string>
+    <string name="title_tab_pbasic_data">Basisdaten</string>
+    <string name="title_tab_pspecial_data">Spezial</string>
+    <string name="p_name_hint">Name</string>
+    <string name="p_dob_hint">Geburtsdatum</string>
+    <string name="p_firstname_hint">Vorname</string>
+    <string name="title_activity_pmedication">Meine Medikamente</string>
+
+    <!-- Password Dialog -->
+    <string name="pass_title">Patientenakte öffnen</string>
+    <string name="pass_title_first_time">Passwort wählen</string>
+    <string name="pass_err_length">Ihr Passwort ist nicht lang genug</string>
+    <string name="pass_err_upper">Ihr Passwort enthält keine Großbuchstaben</string>
+    <string name="pass_err_lower">Ihr Passwort enthält keine Kleinbuchstaben</string>
+    <string name="pass_err_num">Ihr Passwort enthält keine Zahlen</string>
+    <string name="pass_err_not_equal">Passwörter stimmen nicht überein</string>
+    <string name="pass_err_not_correct">Passwort nicht korrekt</string>
+    <string name="new_password">Alle Daten Ihrer mobilen Patientenakte sind in einer verschlüsselten Datenbank gespeichert. Bitte geben Sie ein Passwort für diese Datenbank an.</string>
+    <string name="enter_password">Alle Daten Ihrer mobilen Patientenakte sind in einer verschlüsselten Datenbank gespeichert.</string>
+    <string name="password_label">Passwort eingeben</string>
+    <string name="password_confirmation_label">Passwort wiederholen</string>
+
+    <!-- Disclaimer Dialog -->
+    <string name="disclaimer_dialog_title">Bitte akzeptieren Sie die Nutzungsbedingungen!</string>
+    <string name="disclaimer_dialog_message">Unsere Seiten enthalten Links auf externe Webseiten Dritter. Auf die Inhalte dieser direkt oder indirekt verlinkten Webseiten haben wir keinen Einfluss. Für die Richtigkeit der Inhalte ist immer der jeweilige Anbieter oder Betreiber verantwortlich, weshalb wir diesbezüglich keinerlei Gewähr übernehmen.</string>
+    <string name="disclaimer_checkbox">Ich habe die Nutzungsbedingungen gelesen und bestätige diese.</string>
+
+    <!-- Preferences -->
+    <string name="pref_weight">Körpergewicht</string>
+    <string name="pref_weight_key">weight</string>
+    <string name="pref_backlight_key">backlight</string>
+    <string name="pref_group_personal">Physiologische Daten</string>
+
+    <!-- Menu -->
+    <string name="menu_personalization">Personalisieren</string>
+    <string name="menu_map">Standorte</string>
+    <string name="menu_info">Über MediApp</string>
+    <string name="menu_settings">Einstellungen</string>
+    <string name="menu_new_event">Neuer Termin</string>
+
+    <!-- Diagnosis -->
+
+    <string name="title_activity_pdiagnosis">Meine Diagnosen</string>
+    <string name="title_edit_pdiagnosis">Diagnose bearbeiten</string>
+    <string name="diag_item_data_incomplete">Bitte geben Sie eine Beschreibung an.</string>
+    <string name="pick_date">Datum auswählen</string>
+    <string name="label_diagnosis_name">Diagnose</string>
+    <string name="label_icd">ICD</string>
+    <string name="context_delete_diagnosis">Diagnose löschen</string>
+    <string name="label_diagnosis">Diagnose</string>
+    <string name="pdiagnosis_label_erstdiagnose">Erstdiagnose</string>
+    <string name="pdiagnosis_hint_erstdiagnose">Datum</string>
+    <string name="pmaindata_label_name">Name</string>
+    <string name="pmaindata_label_vorname">Vorname</string>
+    <string name="pmaindata_label_geboren">geb. am</string>
+    <string name="title_activity_my_preference">MyPreferenceActivity</string>
+
+    <!-- Bluetooth -->
+
+    <string name="devicelist_scanfordevices">Scan for devices</string>
+    <string name="devicelist_scanningfordevices">Scanning for devices ...</string>
+    <string name="devicelist_paireddevices">Paired devices</string>
+    <string name="devicelist_founddevices">Found devices</string>
+    <string name="devicelist_pairingwithdevice" formated="false">Pairing with device: %s</string>
+    <string name="title_activity_diagnose_tool">DiagnoseToolActivity</string>
+    <string name="title_activity_demo_overview">Übersicht</string>
+
+    <!-- Demo Texts -->
+
+    <string name="demo_add_diagnosis">Hinzufügen</string>
+    <string name="demo_select_datum">Datum</string>
+    <string name="select_diagnosis">Diagnose auswählen</string>
+    <string name="title_activity_demo_info">DemoInfoActivity</string>
+    <string name="title_activity_demo_article">DemoArticleActivity</string>
+    <string name="diagnosis_name_key">DIAGNOSIS_NAME</string>
+    <string name="description_key">DESCRIPTION</string>
+    <string name="spo2_unit">%</string>
+    <string name="spo2_title">SpO2:</string>
+    <string name="heartrate_title">BPM:</string>
+    <string name="heartrate_unit">PRbpm</string>
+    <string name="perfusion_title">PI:</string>
+    <string name="perfusion_unit">%</string>
+    <string name="title_spinner">Wählen sie ihr Geschlecht:</string>
+</resources>
