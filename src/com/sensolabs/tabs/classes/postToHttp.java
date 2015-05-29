@@ -41,7 +41,8 @@ public class postToHttp extends AsyncTask<Void, String, Void> {
 		post = true;
 		if (isNetworkAvailable(activity)) {
 			Log.d(TAG, "Network is available");
-			httppost = new HttpPost("http://192.168.185.1:8080/kardioAppServer/remotestation");
+		//	httppost = new HttpPost("http://192.168.185.1:8080/health/remotestation");//
+			httppost = new HttpPost("http://192.168.6.23:8181/si-server/remotestation");
 			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
 				executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 			} else {

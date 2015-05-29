@@ -4,6 +4,9 @@ import static com.example.bleexample.classic.IntentIdentifier.BLUETOOTH_UPDATES;
 
 import java.math.BigInteger;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -48,9 +51,9 @@ import com.androidplot.xy.XYStepMode;
 import com.example.bleexample.R;
 import com.example.bleexample.classic.ClassicService;
 import com.example.bleexample.classic.ClassicService.LocalBinder;
+import com.sensolabs.tabs.classes.HttpClient1;
 import com.sensolabs.tabs.classes.Persistenses;
 import com.sensolabs.tabs.classes.SensoStrings;
-import com.sensolabs.tabs.classes.postToHttp;
 
 public class GetSensorDataFragment extends Fragment {
 
@@ -84,7 +87,7 @@ public class GetSensorDataFragment extends Fragment {
 	boolean mBound = false;
 	public boolean mConnect = false;
 	private Intent intentDevice;
-	private static postToHttp doPost;
+//	private static postToHttp doPost;
 	// private static PostHeartOxi doHeartOx;
 	private static Button bt_connect;
 
@@ -267,7 +270,7 @@ public class GetSensorDataFragment extends Fragment {
 		plot1.setRangeLabel("Surface potential/mV");
 		plot1.getRangeLabelWidget().pack();
 		plot1.setTitle("ECG graph");
-		plot1.setDomainStep(XYStepMode.INCREMENT_BY_VAL, 10);
+		plot1.setDomainStep(XYStepMode.INCREMENT_BY_VAL, 1);
 	}
 
 	@Override
@@ -302,7 +305,7 @@ public class GetSensorDataFragment extends Fragment {
 		if (mBound) {
 			mService.putDeviceName(persistenses.getDeviceName());
 
-			doPost = new postToHttp(activity);
+		//	doPost = new postToHttp(activity);
 
 			Log.d(TAG,
 					"Connecting to sensor..." + persistenses.getDeviceAddress());
@@ -449,6 +452,7 @@ public class GetSensorDataFragment extends Fragment {
 		getActivity().unregisterReceiver(messageReceiver);
 		persistenses.putDeviceName("");
 		persistenses.putDeviceAddress("");
+		persistenses.putPatientID("");
 
 		Log.i("onDestroy", String.valueOf(mService.closeBT()));
 
@@ -579,9 +583,16 @@ public class GetSensorDataFragment extends Fragment {
 					pulse = true;
 					// doPost.setNewPost(bytesAvaiable, data, minThre, maxThre,
 					// patientID,sendMSG, ServerMessage, minYellow, maxYellow);
-					doPost.setNewPost(bytesAvaiable, data, minThre, maxThre,
-							patientID, sendMSG, ServerMessage, minYellow,
-							maxYellow, pulse, ecg);
+				//	doPost.setNewPost(bytesAvaiable, data, minThre, maxThre,
+				//			patientID, sendMSG, ServerMessage, minYellow,
+					//		maxYellow, pulse, ecg);
+					
+					if(persistenses.getPatientID().matches(patientID) && patientID!=null && !persistenses.getPatientID().matches("")){
+			//			new Thread(new TaskGet(persistenses.getPatientID(), data)).start();
+			//			Log.d("Json Data Check" , patientID +" !!"+ persistenses.getPatientID());
+						new Thread(new TaskGet(persistenses.getPatientID(), data, String.valueOf(pulse),String.valueOf(ecg),
+								String.valueOf(bytesAvaiable))).start();
+					}
 
 					if (bytesAvaiable == 12) {
 
@@ -661,8 +672,8 @@ public class GetSensorDataFragment extends Fragment {
 					setAnimation(heartrate_val / 60);
 					int[] wave = new int[25];
 					float parseInt;
-					for (int i = 4; i < 54; i++) {
-						if (i < 53 && i % 2 == 0) {
+					for (int i = 4; i < 53; i++) {
+						if (i % 2 == 0) {
 							int ecgInt = get2sComplement(dataBytes[i].concat(dataBytes[i+1]));
 							UpdatePlotECG(ecgInt);
 							wave_string.append(ecgInt + ",");
@@ -670,17 +681,68 @@ public class GetSensorDataFragment extends Fragment {
 					}
 					
 				String dataECG = wave_string.deleteCharAt(wave_string.length()-1).toString();
+				
+				Log.i("ECG Data", dataECG);
 					
-				doPost.setNewPost(heartrate_val, dataECG, minThre, maxThre,
-						patientID, sendMSG, ServerMessage, minYellow,
-						maxYellow, pulse, ecg);
+			//	doPost.setNewPost(heartrate_val, dataECG, minThre, maxThre,
+			//			patientID, sendMSG, ServerMessage, minYellow,
+			//			maxYellow, pulse, ecg);
 
 				}
 			}
 
 		}
+		
+		class TaskGet implements Runnable {
+			 
+			  String data, p_id, boolPulse, availableBytes,boolECG;
+				 
+				 public TaskGet(String p_id, String data, String boolPulse,String boolECG, String availableBytes ) {
+					this.data = data;this.p_id = p_id;this.boolPulse = boolPulse; this.availableBytes = availableBytes;
+					this.boolECG = boolECG;
+				}
+			     @Override
+			     public void run() {
+			    	 
+			      sendJsonDataToServer(p_id, data, boolPulse,boolECG, availableBytes);
+			      
+			      }
+			
+			    }
 
 	};
+	
+
+	
+	private static void sendJsonDataToServer(String p_id, String data, String boolPulse,String boolECG, 
+			String availableBytes) {
+		
+		
+		JSONObject jsonObjSend = new JSONObject();
+
+		try {
+			// Add key/value pairs
+			jsonObjSend.put("sensordata", data);
+			jsonObjSend.put("p_id", p_id);
+			jsonObjSend.put("boolPulse", boolPulse);
+			jsonObjSend.put("boolECG", boolECG);
+			jsonObjSend.put("availableBytes", availableBytes);
+		
+			
+			// Output the JSON object we're sending to Logcat:
+			//Log.i( TAG + ":JSON Data", jsonObjSend.toString(2));
+			
+			// Send the HttpPostRequest and receive a JSONObject in return
+			JSONObject jsonObjRecv = HttpClient1.SendHttpPost(SensoStrings.URLSensor, jsonObjSend);
+		//	Log.i("Received Response", jsonObjRecv.toString(2));
+			
+
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+
+
+	}
 
 	public static void textSwitcher(String text) {
 		textSwitcher.setText(text);
@@ -731,8 +793,13 @@ public class GetSensorDataFragment extends Fragment {
 		if (series1.size() > 120) {
 			series1.removeLast();
 		}
-		series1.addFirst(null, value);
+		
+		int i = 0;
+	//	if(value<20000 && value > -20000){
+		series1.addFirst(i, value);
 		plot1.redraw();
+		i=i+1;
+	//	}
 	}
 
 	// @Override

@@ -30,16 +30,20 @@ import android.widget.Toast;
 import com.example.bleexample.R;
 import com.sensolabs.tabs.classes.Persistenses;
 import com.sensolabs.tabs.classes.SensoStrings;
+import com.sensolabs.tabs.classes.JSON.JSONTaskPost;
+import com.sensolabs.tabs.classes.JSON.JSONTaskGet;
 import com.sensolabs.tabs.databases.DatabaseHandler;
 import com.sensolabs.tabs.databases.Patient;
 import com.sensolabs.tabs.databases.SettingUpDialogue;
 
 public class SetValue extends Fragment {
+	
+	private static String TAG = SetValue.class.getSimpleName();
     
 	Patient currentPatient= new Patient();
 	Button Save, Load,hButton,iButton,bButton,Update;
 	EditText firstName, name, patientID, minH, maxH, minI, maxI, minB, maxB, getMSG;
-boolean alarm,message,autoSendValidation=true;
+    boolean alarm,message,autoSendValidation=true;
 	private String nameET,firstNameET,pIDET;
 	private String minHET,maxHET,minIET,maxIET,minBET,maxBET;
 	Patient patient=new Patient();
@@ -47,6 +51,7 @@ boolean alarm,message,autoSendValidation=true;
 	private  static Timer timer1,timer2;
 	private Activity activity;
 	private static int val_heart = 0, val_SpO2 = 0;
+
 
 	
 	
@@ -74,14 +79,21 @@ boolean alarm,message,autoSendValidation=true;
 		//nullcolumnHack is for the Empty row.if we pass an empty contentValues then if we want to save then then nullColumnHack shouldn't be null
 		sql.close();
 			Toast.makeText(getActivity().getBaseContext(), "The Data has been stored" , Toast.LENGTH_SHORT).show();
+			
+			//send data to server
+			new Thread(new JSONTaskPost(patient, getActivity())).start();
+			
 		
 	}
+	
+	
+    
 	/**
 	 * This method is used for update the database if a user wants to change some fields. Here notice that we are ot updating 
 	 * PatientID because it is a unique field.
 	 * @return updated data
 	 */
-	private int updateData() {
+	private int updateData(Patient p) {
 		DatabaseHandler androidDbHelper = new DatabaseHandler(getActivity());
 		SQLiteDatabase sql=androidDbHelper.getWritableDatabase();
 		ContentValues contentValues= new  ContentValues();
@@ -96,6 +108,8 @@ boolean alarm,message,autoSendValidation=true;
 		contentValues.put(androidDbHelper.KEY_BMAX, getMSG.getText().toString());
 		contentValues.put(androidDbHelper.KEY_ALARM, SettingUpDialogue.indexAlarm);
 		contentValues.put(androidDbHelper.KEY_MESSAGE, SettingUpDialogue.indexMessage);
+		
+		
 		return sql.update(androidDbHelper.NAME_TABLE, contentValues,
 				androidDbHelper.KEY_IBI+"='" + patientID.getText().toString()+"'"
 				,null);
@@ -128,6 +142,9 @@ boolean alarm,message,autoSendValidation=true;
 			currentPatient.setNumBreathingrateMax(cursor.getString(8));
 			currentPatient.setAlarm((cursor.getInt(9)==1)?true:false);
 			currentPatient.setMessage((cursor.getInt(10)==1)?true:false);
+			
+			new Thread(new JSONTaskGet(currentPatient.getId(), getActivity())).start();
+
 
 			GetSensorDataFragment.patientID=  SendPatientIDToServer(cursor.getString(2));
 			String minString=cursor.getString(3);
@@ -169,6 +186,12 @@ boolean alarm,message,autoSendValidation=true;
 		sql.close();
 		return mDatabase;
 	}
+	
+	
+
+
+
+
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -328,7 +351,7 @@ timer1.scheduleAtFixedRate(new TimerTask() {
 					Log.e("OnclickLoad", "Just a Toast From Load");
 				}else{				
 					autoSendValidation=true;
-				Log.e("onclickedload","Clicking on Load Button");
+				Log.i(TAG,"changing the patient ID");
 				
 				  populateData();
 				firstName.setText(currentPatient.getName());
@@ -392,7 +415,8 @@ timer1.scheduleAtFixedRate(new TimerTask() {
 			    patient.setAlarm(alarm);
 			    patient.setMessage(message);
 			    insertData(patient);
-			    if(updateData()>0)
+			    
+			    if(updateData(patient)>0)
 				{
 					Toast.makeText(getActivity(), "Update sucessfully", Toast.LENGTH_SHORT).show();
 				

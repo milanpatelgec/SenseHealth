@@ -261,6 +261,7 @@ public class FragmentBluetoothGraph extends Fragment {
 		if (series1.size() > 120) {
 			series1.removeLast();
 		}
+		
 			series1.addFirst(null, value);
 			plot1.redraw();
 	}

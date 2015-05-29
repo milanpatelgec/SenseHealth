@@ -15,6 +15,14 @@ public class SensoStrings {
 	public static final String EXTRAS_DEVICE_NAME = "DEVICE_NAME";
 	public static final String EXTRAS_DEVICE_ADDRESS = "DEVICE_ADDRESS";
 	
+	/*
+	 * Strings for sending and receiving data from REST Apis in JSON
+	 */
+	
+	public static final String URLPost = "http://192.168.6.23:8181/si-server/rest/addpatient";
+	public static final String URLGet = "http://192.168.6.23:8181/si-server/rest/editpatient/";
+	public static final String URLSensor = "http://192.168.6.23:8181/si-server/rest/sensordata";
+	
 	
 	/** For Easy ECG Monitors**/
     public static byte _command_ack_data[];
